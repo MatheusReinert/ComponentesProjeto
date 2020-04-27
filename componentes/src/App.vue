@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <!-- criado a propriedade "caixinhas", onde será enviado a váriavel "caixinhas2" para o componente Caixas -->
-    <caixas :caixinhas2="caixinhas"/>
+    <caixas />
     <!-- O "$event" serve para pegar todas as informações do método disparado -->
-    <ferramentas :caixinhas2="caixinhas" @alteraCor="alteraCor($event)" @alterouTexto="alteraTexto"/>
+    <ferramentas @alteraCor="alteraCor($event)" @alterouTexto="alteraTexto"/>
   </div>
 </template>
 
@@ -19,22 +19,7 @@ export default {
     Caixas, Ferramentas
     }, data: function(){
       return {
-    caixinhas: [{
-      titulo: "1",
-      cor: "background: red"
-
-    },{
-
-      titulo: "2",
-      cor: "background: blue"
-
-
-    },{
-
-      titulo: "3",
-      cor: "background: orange"
-
-    }]
+   
 
       } 
     }, methods: {

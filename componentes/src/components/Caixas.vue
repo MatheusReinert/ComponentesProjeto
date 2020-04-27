@@ -3,7 +3,7 @@
     <!--  caixinhas é o vetor, onde cada elemento corrente será guardado dentro da variável caixa. 
     O "index" recebe a posição de cada item dentro do vetor, ele criará uma div para cada elemento do Vetor.-->
      
-    <div class="caixinhas" v-for="(caixa, index) in caixinhas2" :key="index" :style="caixa.cor">
+    <div class="caixinhas" v-for="(caixa, index) in caixinhas" :key="index" :style="caixa.cor">
 
       <!-- Aqui é pega o elemento do vetor "caixa" . "a propriedade dentro dele" "titulo"-->
       {{caixa.titulo}}
@@ -17,9 +17,15 @@
 <script>
 export default {
 name: "Caixas",
-// "Props" é um vetor, que guarda as informações do componente para serem exibidas no próprio componente.
-props: ['caixinhas2']
 
+computed: {
+caixinhas () {
+
+return this.$store.state.caixinhas
+
+}
+
+}
 
 }
 </script>

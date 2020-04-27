@@ -3,7 +3,7 @@
     <select v-model="caixaSel">
       <option value selected disabled>Selecione o Número da Caixa</option>
 
-      <option v-for="(caixa, index) in caixinhas2" :key="index" :value="index">{{caixa.titulo}}</option>
+      <option v-for="(caixa, index) in caixinhas" :key="index" :value="index">{{caixa.titulo}}</option>
     </select>
 
     <div class="paleta">
@@ -26,8 +26,14 @@
 <script>
 export default {
   name: "Ferramentas",
-  props: ["caixinhas2"],
-  data: function() {
+  computed: {
+
+ caixinhas () {
+   
+return this.$store.state.caixinhas
+ }
+   },
+   data: function() {
     return {
       cores: ["background: brown", "background:white", "background: green"],
       // Definido a váriavel "caixaSel" que irá informar ao App.Vue qual caixa foi selecionada
@@ -40,13 +46,13 @@ export default {
   methods: {
     alteraCor: function(cor) {
       // Dentro do emit, serão chamado os eventos criados no App.Vue (alterCor)
-      this.$emit("alteraCor", {
+      this.$store.commit("alteraCor", {
         cor: cor,
         caixa: this.caixaSel
       });
     },
     alterarTexto: function() {
-      this.$emit("alterouTexto", {
+      this.$store.commit("alterouTexto", {
         titulo: this.titulo,
         caixa: this.caixaSel
       });
